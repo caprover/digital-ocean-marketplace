@@ -47,3 +47,4 @@ The secure erase will complete successfully when you see:${NC}
 Beginning secure erase now\n"
 
 dd if=/dev/zero of=/zerofile bs=4096 || rm /zerofile
+cat /dev/null > /var/log/lastlog; cat /dev/null > /var/log/wtmp

@@ -6,22 +6,22 @@ myip=$(hostname -I | awk '{print$1}')
 cat <<EOF
 ********************************************************************************
 
-Welcome to DigitalOcean's 1-Click LEMP Droplet.
-To keep this Droplet secure, the UFW firewall is enabled.
-All ports are BLOCKED except 22 (SSH), 80 (HTTP), and 443 (HTTPS).
+Welcome to CapRover, Open Source PaaS for developers!
 
-In a web browser, you can view:
-  * The LEMP 1-Click Quickstart guide: https://do.co/2GOFe5J#start
-  * Your LEMP website: http://$myip
 
-On the server:
-  * The default web root is located at /var/www/html
-  * The MySQL root password is saved in /root/.digitalocean_password
-  * Certbot is preinstalled. Run it to configure HTTPS. See
-    https://do.co/2GOFe5J#enable-https for more detail.
+Follow the guide here to finish the setup https://caprover.com/docs/get-started.html#step-3-install-caprover-cli
 
-For help and more information, visit https://do.co/2GOFe5J
+Or you can access the dashboard from http://$myip:3000
+
+The default password is captain42
+
+
+
+
+Please make sure to read the documentation https://CapRover.com
+
 
 ********************************************************************************
-To delete this message of the day: rm -rf $(readlink -f ${0})
+
 EOF
+
