@@ -44,4 +44,4 @@ ufw --force enable
 
 
 ### CapRover
-docker pull caprover/caprover:1.10.0
+docker pull caprover/caprover:VAR_CAPROVER_VERSION

@@ -4,7 +4,7 @@
     "image_name": "caprover-snapshot-{{timestamp}}",
     "apt_packages": "apt-transport-https ca-certificates curl jq linux-image-extra-virtual software-properties-common fail2ban",
     "application_name": "CapRover",
-    "application_version": "1.10.0"
+    "application_version": "VAR_CAPROVER_VERSION"
   },
   "sensitive-variables": ["do_token"],
   "builders": [
