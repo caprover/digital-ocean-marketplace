@@ -42,6 +42,10 @@ ufw allow 80,443,3000,996,7946,4789,2377/tcp; ufw allow 7946,4789,2377/udp;
 ufw --force enable
 
 
+## cleanup do-agent: https://github.com/digitalocean/marketplace-partners/issues/166
+apt-get purge droplet-agent* -y ||  echo "No DO Agent Found"
+
+
 
 ### CapRover
 docker pull caprover/caprover:VAR_CAPROVER_VERSION
