@@ -11,7 +11,7 @@
     {
       "type": "digitalocean",
       "api_token": "{{user `do_token`}}",
-      "image": "ubuntu-20-04-x64",
+      "image": "ubuntu-22-04-x64",
       "region": "nyc3",
       "size": "s-1vcpu-1gb",
       "ssh_username": "root",
@@ -21,9 +21,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "cloud-init status --wait"
-      ]
+      "inline": ["cloud-init status --wait"]
     },
     {
       "type": "file",
