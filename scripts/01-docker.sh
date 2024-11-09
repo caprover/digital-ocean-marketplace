@@ -16,8 +16,14 @@ systemctl enable docker
 systemctl start docker
 
 # DOCKER COMPOSE
-sudo curl -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+#!/bin/sh
+
+mkdir -p ~/.docker/cli-plugins/
+if [ -z "${docker_compose_version}" ]; then
+    docker_compose_version=$(curl -sSL "https://api.github.com/repos/docker/compose/releases/latest" | jq -r '.tag_name')
+fi
+curl -SL https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
 
 # GRUB OPTS
 sed -e 's|GRUB_CMDLINE_LINUX="|GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1|g' \
@@ -28,6 +34,28 @@ update-grub
 # DOCKER DNS
 sed -e 's|#DOCKER_OPTS|DOCKER_OPTS|g' \
     -i /etc/default/docker
+
+# Application Tag
+################################
+## PART: Write the application tag
+##
+## vi: syntax=sh expandtab ts=4
+
+build_date=$(date +%Y-%m-%d)
+distro="$(lsb_release -s -i)"
+distro_release="$(lsb_release -s -r)"
+distro_codename="$(lsb_release -s -c)"
+distro_arch="$(uname -m)"
+
+cat >>/var/lib/digitalocean/application.info <<EOM
+application_name="${application_name}"
+build_date="${build_date}"
+distro="${distro}"
+distro_release="${distro_release}"
+distro_codename="${distro_codename}"
+distro_arch="${distro_arch}"
+application_version="${application_version}"
+EOM
 
 #UFW
 
