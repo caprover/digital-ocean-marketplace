@@ -3,6 +3,8 @@
 Taken from https://github.com/digitalocean/marketplace-partners
 commit: c17018a3f31aa9db08fa5bc7cafb9d21ed2c967c
 
+Also some scripts from [here](https://github.com/digitalocean/droplet-1-clicks)
+
 - Ensure `DIGITALOCEAN_TOKEN` env var is set up. `echo $DIGITALOCEAN_TOKEN`
 - Personal Token can be generated from here: https://docs.digitalocean.com/reference/api/create-personal-access-token/
   Simply go here: https://cloud.digitalocean.com/account/api/tokens
